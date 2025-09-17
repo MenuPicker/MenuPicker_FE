@@ -11,9 +11,10 @@
 .container {
   background-color: #ffffff;
   width: 250px;
-  height: 250px;
+  height: 270px;
   border-radius: 16px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -22,4 +23,30 @@
   transform: translate(-50%, -50%);
   z-index: 1000;
   pointer-events: auto;
+}
+.header {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+.body {
+  height: 230px;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.closeBtn {
+  height: 30px;
+  width: 30px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  margin: 5px 5px 0 0;
+}
+.closeBtn:hover {
+  transform: scale(1.1);
 }
