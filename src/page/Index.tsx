@@ -13,7 +13,9 @@ export default function Index() {
     <div>
       {isOpen && <QRModal setIsOpen={setIsOpen} />}
       {!isMobile && (
-        <button onClick={clickDownloadBtn}>핸드폰으로 다운로드</button>
+        <div>
+          <button onClick={clickDownloadBtn}>핸드폰으로 다운로드</button>
+        </div>
       )}
     </div>
   );
