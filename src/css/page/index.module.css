@@ -15,7 +15,7 @@
   width: 600px;
   box-sizing: border-box;
 }
-header {
+.header {
   font-size: 13px;
   color: #606060ff;
   text-align: center;
