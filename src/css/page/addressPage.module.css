@@ -36,7 +36,7 @@
 .errorMsg {
   position: absolute;
   /* bottom: 20px; */
-  bottom: 0;
+  bottom: -5px;
   left: 0;
   color: red;
   font-size: 12px;
@@ -48,6 +48,13 @@
   position: absolute;
   right: 10px;
 }
+/* .textDiv {
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 20px;
+} */
 
 .resultList {
   margin-top: 8px;
@@ -65,4 +72,18 @@
 
 .resultList li:hover {
   background-color: #f0f0f0;
+}
+
+.locationDiv {
+  /* margin-top: 30px; */
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  color: #ff6600;
+  position: absolute;
+  bottom: -15px;
+}
+.locationIcon {
+  height: 24px;
+  width: 24px;
 }
