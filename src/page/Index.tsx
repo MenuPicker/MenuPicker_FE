@@ -1,5 +1,6 @@
 import { useState } from "react";
 import QRModal from "../components/QR_Modal";
+import { isMobile } from "react-device-detect";
 
 export default function Index() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +12,9 @@ export default function Index() {
   return (
     <div>
       {isOpen && <QRModal setIsOpen={setIsOpen} />}
-      <button onClick={clickDownloadBtn}>핸드폰으로 다운로드</button>
+      {isMobile && (
+        <button onClick={clickDownloadBtn}>핸드폰으로 다운로드</button>
+      )}
     </div>
   );
 }
