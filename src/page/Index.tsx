@@ -23,7 +23,7 @@ export default function Index() {
           <button onClick={clickDownloadBtn}>앱으로 열기</button>
         </div>
       )}
-      <header>
+      <header className={indexStyle.header}>
         <em>MenuPicker</em>
       </header>
       <div className={indexStyle.content}>
