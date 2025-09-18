@@ -21,5 +21,6 @@ body {
   width: 100%;
   max-width: 600px;
   min-height: 100vh;
-  background-color: red;
+  /* background-color: red; */
+  border: 1px solid black;
 }
