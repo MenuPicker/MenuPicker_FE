@@ -6,6 +6,9 @@ import drinkIcon from "../assets/drink-icon.png";
 
 export default function CategoryPage() {
   const navigate = useNavigate();
+  const handleClick = (type: string) => {
+    navigate(`/address?category=${type}`);
+  };
   return (
     <div className={categoryStyle.pageContainer}>
       <header className={categoryStyle.header}>
@@ -18,7 +21,12 @@ export default function CategoryPage() {
       </header>
       <div className={categoryStyle.content}>
         <div className={categoryStyle.selectDiv}>
-          <div className={categoryStyle.foodDiv}>
+          <div
+            className={categoryStyle.foodDiv}
+            onClick={() => {
+              handleClick("food");
+            }}
+          >
             <img
               src={foodIcon}
               alt="음식 아이콘"
@@ -26,7 +34,12 @@ export default function CategoryPage() {
             />
             <span>식당 찾기</span>
           </div>
-          <div className={categoryStyle.drinkDiv}>
+          <div
+            className={categoryStyle.drinkDiv}
+            onClick={() => {
+              handleClick("drink");
+            }}
+          >
             <img
               src={drinkIcon}
               alt="술집 아이콘"
