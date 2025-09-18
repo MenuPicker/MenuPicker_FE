@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import "../css/index.css";
+import "../css/style.css";
 
 export default function GlobalLayout() {
   return (
