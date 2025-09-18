@@ -11,13 +11,19 @@ export default function Index() {
   };
 
   return (
-    <div>
+    <div className={indexStyle.pageContainer}>
       {isOpen && <QRModal setIsOpen={setIsOpen} />}
       {!isMobile && (
-        <div>
-          <button onClick={clickDownloadBtn}>핸드폰으로 다운로드</button>
-        </div>
+        <header className={indexStyle.qrDiv}>
+          <button onClick={clickDownloadBtn}>앱으로 열기</button>
+        </header>
       )}
+      <div>
+        <div className={indexStyle.titleDiv}>
+          <span className={indexStyle.title1}>가장 효율적인</span>
+          <span className={indexStyle.title2}>선택</span>
+        </div>
+      </div>
     </div>
   );
 }

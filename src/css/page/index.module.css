@@ -1,0 +1,22 @@
+.pageContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.qrDiv {
+  background-color: red;
+  height: 50px;
+}
+.titleDiv {
+  display: flex;
+  gap: 10px;
+}
+.title1,
+.title2 {
+  font-size: 30px;
+  font-weight: 700;
+}
+.title2 {
+  color: #ff6600;
+}
