@@ -1,7 +1,25 @@
-body,
+/* body,
 html {
   margin: 0;
   padding: 0;
   height: 100vh;
   width: 100vw;
+} */
+body {
+  margin: auto;
+  padding: 0;
+  max-width: 600px;
+  overflow: hidden scroll;
+}
+/* #root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+} */
+.layoutContainer {
+  width: 100%;
+  max-width: 600px;
+  min-height: 100vh;
+  background-color: red;
 }
