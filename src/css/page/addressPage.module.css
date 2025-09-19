@@ -6,9 +6,10 @@
   position: relative;
 }
 .content {
-  height: 93vh;
+  height: 86vh;
   padding: 0 20px;
   box-sizing: border-box;
+  margin-top: 7vh;
 }
 
 .inputDiv {
@@ -61,10 +62,11 @@
 } */
 
 .resultList {
-  margin-top: 8px;
-  max-height: 200px;
+  box-sizing: border-box;
+  margin-top: 20px;
+  max-height: 400px;
   overflow-y: auto;
-  border: 1px solid #ddd;
+  border: none;
   border-radius: 8px;
   padding: 4px;
 }
@@ -75,7 +77,8 @@
 }
 
 .resultList li:hover {
-  background-color: #f0f0f0;
+  background-color: rgba(255, 102, 0, 0.8);
+  color: white;
 }
 
 .locationDiv {
@@ -107,9 +110,9 @@
   border: none;
   outline: none;
 }
-.inputDivFocused > svg {
+/* .inputDivFocused > svg {
   display: none;
-}
+} */
 .header {
   color: #606060ff;
   /* margin-top: 20px; */
