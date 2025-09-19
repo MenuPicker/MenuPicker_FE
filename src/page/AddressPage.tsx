@@ -15,24 +15,31 @@ export default function AddressPage() {
   const [text, setText] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
-  const [address, setAddress] = useState("");
+  const [address, setAddress] = useState<string>("");
 
-  const handleAddress = async () => {
-    if (inputValue === "") {
-      return;
-    }
+  const handleAddress = async (query: string) => {
+    if (!query) return;
+
     try {
-      const response = await fetch(
-        `https://dapi.kakao.com/v2/local/search/keyword.json?query=${inputValue}`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: `KakaoAK ${import.meta.env.VITE_KAKAO_REST_API_KEY}`,
-          },
-        }
-      );
-      const data = await response.json();
-      setResults(data.documents || []);
+      const resultsArr: any[] = [];
+
+      for (let page = 1; page <= 3; page++) {
+        const response = await fetch(
+          `https://dapi.kakao.com/v2/local/search/keyword.json?query=${query}&size=15&page=${page}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `KakaoAK ${
+                import.meta.env.VITE_KAKAO_REST_API_KEY
+              }`,
+            },
+          }
+        );
+        const data = await response.json();
+        resultsArr.push(...(data.documents || []));
+      }
+
+      setResults(resultsArr);
     } catch (error: any) {
       console.error(error.message);
     }
@@ -73,7 +80,11 @@ export default function AddressPage() {
       const data = await response.json();
       if (data.documents && data.documents.length > 0) {
         const address = data.documents[0].address.address_name;
-        console.log("현재 주소:", address);
+        // console.log("현재 주소:", address);
+
+        const keyword = address.split(" ").slice(0, 3).join(" ");
+        setInputValue(keyword);
+        handleAddress(keyword);
         return address;
       } else {
         console.log("주소를 찾을 수 없습니다.");
@@ -88,6 +99,8 @@ export default function AddressPage() {
   const handleBackBtn = () => {
     if (showLocation) {
       setShowLocation(false);
+      setInputValue("");
+      setResults([]);
       return;
     }
     navigate(-1);
@@ -95,6 +108,7 @@ export default function AddressPage() {
 
   const handleMyAddress = (address: string) => {
     setAddress(address);
+    console.log(address);
   };
   return (
     <div className={addressStyle.pageContainer}>
@@ -105,7 +119,7 @@ export default function AddressPage() {
         }`}
       >
         {showLocation && (
-          <div onMouseDown={getLocation} className={addressStyle.locationDiv}>
+          <div onClick={getLocation} className={addressStyle.locationDiv}>
             <CiLocationArrow1 className={addressStyle.locationIcon} />
             <span>내 위치</span>
           </div>
@@ -121,9 +135,13 @@ export default function AddressPage() {
         >
           <input
             type="text"
+            value={inputValue}
             className={addressStyle.addressInput}
-            placeholder="주소를 입력해주세요"
-            onChange={(e) => setInputValue(e.target.value)}
+            placeholder="주소 또는 장소를 입력해주세요"
+            onChange={(e) => {
+              setInputValue(e.target.value);
+              handleAddress(e.target.value);
+            }}
             onFocus={() => setShowLocation(true)}
           />
           {/* {errorMsg && (
@@ -132,22 +150,29 @@ export default function AddressPage() {
 
           <CiSearch
             className={addressStyle.searchIcon}
-            onClick={handleAddress}
+            onClick={() => {
+              handleAddress(inputValue);
+            }}
           />
         </div>
       </header>
       <div className={addressStyle.content}>
         <ul className={addressStyle.resultList}>
-          {results.map((item, idx) => (
-            <li
-              key={idx}
-              onClick={() => {
-                handleMyAddress(item.address_name);
-              }}
-            >
-              {item.address_name}
-            </li>
-          ))}
+          {inputValue === "" && null}
+          {inputValue !== "" && (
+            <>
+              {results.map((item, idx) => (
+                <li
+                  key={idx}
+                  onClick={() => {
+                    handleMyAddress(item.address_name);
+                  }}
+                >
+                  <span>{item.place_name}</span>
+                </li>
+              ))}
+            </>
+          )}
         </ul>
       </div>
     </div>
