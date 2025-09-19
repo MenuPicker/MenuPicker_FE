@@ -1,0 +1,155 @@
+.pageContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.content {
+  height: 86vh;
+  padding: 0 20px;
+  box-sizing: border-box;
+  margin-top: 7vh;
+}
+
+.inputDiv {
+  position: relative;
+  /* width: 100%; */
+  /* margin-top: 20px; */
+  /* background-color: red; */
+  /* height: 10vh; */
+  display: flex;
+  flex-direction: column;
+  /* margin-top: 15px; */
+  justify-content: center;
+  flex: 1;
+  margin-right: 20px;
+}
+.addressInput {
+  height: 6vh;
+  width: 100%;
+  border: none;
+  border-radius: 100px;
+  box-sizing: border-box;
+  padding-right: 35px;
+  font-size: 16px;
+  padding-left: 15px;
+  color: gray;
+  border: 2px solid #ddd;
+}
+.errorMsg {
+  position: absolute;
+  /* bottom: 20px; */
+  bottom: -5px;
+  left: 0;
+  color: red;
+  font-size: 12px;
+  /* margin-top: 5px; */
+}
+.searchIcon {
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
+  position: absolute;
+  right: 10px;
+  /* top: 50%; */
+}
+/* .textDiv {
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 20px;
+} */
+
+.resultList {
+  box-sizing: border-box;
+  margin-top: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+  border: none;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.resultList .li {
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.liSelected {
+  background-color: rgba(255, 102, 0, 0.8);
+  color: white;
+}
+
+.locationDiv {
+  cursor: pointer;
+  box-sizing: border-box;
+  padding-left: 15px;
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  color: #ff6600;
+  position: absolute;
+  /* margin-left: 10px; */
+  border-bottom: 1px solid #cccccc;
+  bottom: 0;
+  transform: translateY(100%);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+.locationDiv > span {
+  font-size: 16px;
+  font-weight: 500;
+}
+.locationIcon {
+  height: 30px;
+  width: 30px;
+}
+
+.inputDivFocused > input {
+  border: none;
+  outline: none;
+}
+/* .inputDivFocused > svg {
+  display: none;
+} */
+.header {
+  color: #606060ff;
+  /* margin-top: 20px; */
+  height: 7vh;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-top: 15px;
+}
+.backIcon {
+  height: 30px;
+  width: 30px;
+  /* margin-top: 15px; */
+  margin-left: 10px;
+  /* margin-top: 30px; */
+}
+.headerFocused {
+  border-bottom: 1px solid #e0e0e0;
+}
+.btnDiv {
+  /* margin-top: 300px; */
+  /* display: flex;
+  justify-content: center; */
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.btnDiv > button {
+  border: none;
+  width: 300px;
+  background-color: #ff6600;
+  height: 50px;
+  color: white;
+  font-size: 20px;
+  border-radius: 10px;
+}

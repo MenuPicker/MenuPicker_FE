@@ -3,6 +3,7 @@ import categoryStyle from "../css/page/categoryPage.module.css";
 import { useNavigate } from "react-router-dom";
 import foodIcon from "../assets/food-icon.png";
 import drinkIcon from "../assets/drink-icon.png";
+import Header from "../components/Header";
 
 export default function CategoryPage() {
   const navigate = useNavigate();
@@ -11,14 +12,7 @@ export default function CategoryPage() {
   };
   return (
     <div className={categoryStyle.pageContainer}>
-      <header className={categoryStyle.header}>
-        <IoIosArrowBack
-          className={categoryStyle.backIcon}
-          onClick={() => {
-            navigate(-1);
-          }}
-        />
-      </header>
+      <Header showLocation={false} setShowLocation={() => {}} />
       <div className={categoryStyle.content}>
         <div className={categoryStyle.selectDiv}>
           <div
