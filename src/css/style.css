@@ -26,7 +26,8 @@ body {
 .layoutContainer {
   /* width: 100%; */
   /* max-width: 600px; */
-  min-height: 100dvh;
+  /* min-height: 100dvh; */
+  height: calc(var(--vh) * 100);
   /* background-color: red; */
   border: 1px solid black;
 }
