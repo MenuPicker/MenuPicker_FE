@@ -133,3 +133,21 @@
 .headerFocused {
   border-bottom: 1px solid #e0e0e0;
 }
+.btnDiv {
+  /* margin-top: 300px; */
+  /* display: flex;
+  justify-content: center; */
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.btnDiv > button {
+  border: none;
+  width: 300px;
+  background-color: #ff6600;
+  height: 50px;
+  color: white;
+  font-size: 20px;
+  border-radius: 10px;
+}

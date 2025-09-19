@@ -5,9 +5,11 @@ import { CiSearch } from "react-icons/ci";
 import { CiLocationArrow1 } from "react-icons/ci";
 import Modal from "../components/Modal";
 import { IoIosArrowBack } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 export default function AddressPage() {
+  const [searchParams] = useSearchParams();
+  const category = searchParams.get("category");
   const [inputValue, setInputValue] = useState("");
   const [results, setResults] = useState<any[]>([]);
   const [showLocation, setShowLocation] = useState(false);
@@ -101,6 +103,7 @@ export default function AddressPage() {
       setShowLocation(false);
       setInputValue("");
       setResults([]);
+      setAddress("");
       return;
     }
     navigate(-1);
@@ -174,6 +177,17 @@ export default function AddressPage() {
             </>
           )}
         </ul>
+        {address && (
+          <div className={addressStyle.btnDiv}>
+            <button
+              onClick={() => {
+                navigate(`/prompt?category=${category}&address=${address}`);
+              }}
+            >
+              이 위치로 선택
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
