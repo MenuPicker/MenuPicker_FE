@@ -11,16 +11,28 @@ export default async function handler(req: any, res: any) {
 
   try {
     const response = await fetch(
-      "https://gemini.googleapis.com/v1/text/generate",
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
       {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${process.env.GEMINI_API_KEY}`,
+          "x-goog-api-key": `${process.env.GEMINI_API_KEY}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          prompt,
-          max_tokens: 200, // 필요하면 조절 가능
+          contents: [
+            {
+              parts: [
+                {
+                  text: prompt,
+                },
+              ],
+            },
+          ],
+          generationConfig: {
+            thinkingConfig: {
+              thinkingBudget: 10,
+            },
+          },
         }),
       }
     );
