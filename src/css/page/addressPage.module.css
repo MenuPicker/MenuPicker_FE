@@ -66,7 +66,7 @@
 .resultList {
   box-sizing: border-box;
   margin-top: 20px;
-  max-height: 400px;
+  max-height: 350px;
   overflow-y: auto;
   border: none;
   border-radius: 8px;

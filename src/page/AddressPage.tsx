@@ -105,6 +105,7 @@ export default function AddressPage() {
       setInputValue("");
       setResults([]);
       setAddress("");
+      setSelectedIdx(null);
       return;
     }
     navigate(-1);
