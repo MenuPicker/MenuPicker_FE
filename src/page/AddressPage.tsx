@@ -4,6 +4,9 @@ import addressStyle from "../css/page/addressPage.module.css";
 import { CiSearch } from "react-icons/ci";
 import { CiLocationArrow1 } from "react-icons/ci";
 import Modal from "../components/Modal";
+import { IoIosArrowBack } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
+
 export default function AddressPage() {
   const [inputValue, setInputValue] = useState("");
   const [results, setResults] = useState<any[]>([]);
@@ -12,7 +15,7 @@ export default function AddressPage() {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-
+  const navigate = useNavigate();
   const handleAddress = async () => {
     if (inputValue.trim() === "") {
       setErrorMsg("주소를 입력해주세요.");
@@ -37,7 +40,8 @@ export default function AddressPage() {
   };
   const getLocation = () => {
     if (!navigator.geolocation) {
-      alert("현재 브라우저에서 위치 정보를 지원하지 않습니다.");
+      setText("현재 브라우저에서 위치 정보를 지원하지 않습니다.");
+      setIsOpen(true);
       return;
     }
 
@@ -49,17 +53,31 @@ export default function AddressPage() {
       },
       (error) => {
         console.error(error);
-        alert("위치 정보를 가져오는데 실패했습니다.");
+        setText("위치 정보를 가져오는데 실패했습니다.");
+        setIsOpen(true);
       }
     );
   };
-
+  const handleBackBtn = () => {
+    if (showLocation) {
+      setShowLocation(false);
+      return;
+    }
+    navigate(-1);
+  };
   return (
     <div className={addressStyle.pageContainer}>
-      <Header showLocation={showLocation} setShowLocation={setShowLocation} />
       {isOpen && <Modal title={title} text={text} setIsOpen={setIsOpen} />}
-      <div className={addressStyle.content}>
-        <div className={addressStyle.inputDiv}>
+      <header className={addressStyle.header}>
+        <IoIosArrowBack
+          className={addressStyle.backIcon}
+          onClick={handleBackBtn}
+        />
+        <div
+          className={`${addressStyle.inputDiv} ${
+            showLocation ? addressStyle.inputDivFocused : ""
+          }`}
+        >
           <input
             type="text"
             className={addressStyle.addressInput}
@@ -81,6 +99,8 @@ export default function AddressPage() {
             onClick={handleAddress}
           />
         </div>
+      </header>
+      <div className={addressStyle.content}>
         {/* <ul className={addressStyle.resultList}>
           {results.map((item, idx) => (
             <li key={idx}>{item.address_name}</li>

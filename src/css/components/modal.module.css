@@ -9,7 +9,7 @@
   z-index: 999;
 }
 .modalContainer {
-  background-color: #ffffff;
+  background-color: #f5f5f5;
   width: 300px;
   height: 150px;
   border-radius: 16px;
@@ -74,7 +74,7 @@
   margin: 0 15px 15px 0;
 }
 .contentText {
-  font-size: 24px;
+  font-size: 18px;
   width: 100%;
   word-wrap: break-word;
   white-space: normal;

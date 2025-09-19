@@ -6,20 +6,23 @@
   position: relative;
 }
 .content {
-  height: 95vh;
+  height: 90vh;
   padding: 0 20px;
   box-sizing: border-box;
 }
 
 .inputDiv {
   position: relative;
-  width: 100%;
+  /* width: 100%; */
   /* margin-top: 20px; */
   /* background-color: red; */
-  height: 10vh;
+  /* height: 10vh; */
   display: flex;
   flex-direction: column;
+  /* margin-top: 15px; */
   justify-content: center;
+  flex: 1;
+  margin-right: 20px;
 }
 .addressInput {
   height: 6vh;
@@ -47,6 +50,7 @@
   width: 24px;
   position: absolute;
   right: 10px;
+  /* top: 50%; */
 }
 /* .textDiv {
   display: flex;
@@ -82,8 +86,31 @@
   color: #ff6600;
   position: absolute;
   bottom: -15px;
+  margin-left: 10px;
 }
 .locationIcon {
   height: 24px;
   width: 24px;
+}
+
+.inputDivFocused > input {
+  border: none;
+  outline: none;
+}
+.inputDivFocused > svg {
+  display: none;
+}
+.header {
+  color: #606060ff;
+  /* margin-top: 20px; */
+  height: 10vh;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.backIcon {
+  height: 30px;
+  width: 30px;
+  /* margin-top: 15px; */
+  margin-left: 10px;
 }
