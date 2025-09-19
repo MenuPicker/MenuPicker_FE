@@ -47,6 +47,7 @@
   /* margin-top: 5px; */
 }
 .searchIcon {
+  cursor: pointer;
   height: 24px;
   width: 24px;
   position: absolute;
@@ -71,17 +72,18 @@
   padding: 4px;
 }
 
-.resultList li {
+.resultList .li {
   padding: 6px 10px;
   cursor: pointer;
 }
 
-.resultList li:hover {
+.liSelected {
   background-color: rgba(255, 102, 0, 0.8);
   color: white;
 }
 
 .locationDiv {
+  cursor: pointer;
   box-sizing: border-box;
   padding-left: 15px;
   width: 100%;

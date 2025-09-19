@@ -18,6 +18,7 @@ export default function AddressPage() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const [address, setAddress] = useState<string>("");
+  const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
 
   const handleAddress = async (query: string) => {
     if (!query) return;
@@ -168,8 +169,12 @@ export default function AddressPage() {
                 <li
                   key={idx}
                   onClick={() => {
+                    setSelectedIdx(idx);
                     handleMyAddress(item.address_name);
                   }}
+                  className={`${addressStyle.li} ${
+                    selectedIdx === idx ? addressStyle.liSelected : ""
+                  }`}
                 >
                   <span>{item.place_name}</span>
                 </li>
