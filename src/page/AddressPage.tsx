@@ -18,6 +18,9 @@ export default function AddressPage() {
   const [address, setAddress] = useState("");
 
   const handleAddress = async () => {
+    if (inputValue === "") {
+      return;
+    }
     try {
       const response = await fetch(
         `https://dapi.kakao.com/v2/local/search/keyword.json?query=${inputValue}`,
