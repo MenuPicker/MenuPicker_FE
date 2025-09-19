@@ -13,9 +13,9 @@ body {
   max-width: 600px;
   overflow: hidden scroll;
   font-family: "Roboto", "Noto Sans KR", sans-serif;
-  background-color: #f5f5f5;
+  /* background-color: #f5f5f5;
   background-image: radial-gradient(#ccc 1px, transparent 1px);
-  background-size: 20px 20px;
+  background-size: 20px 20px; */
 }
 /* #root {
   width: 100%;

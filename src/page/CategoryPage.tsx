@@ -12,7 +12,7 @@ export default function CategoryPage() {
   };
   return (
     <div className={categoryStyle.pageContainer}>
-      <Header />
+      <Header showLocation={false} setShowLocation={() => {}} />
       <div className={categoryStyle.content}>
         <div className={categoryStyle.selectDiv}>
           <div

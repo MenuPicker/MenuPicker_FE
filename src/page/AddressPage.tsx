@@ -3,10 +3,15 @@ import Header from "../components/Header";
 import addressStyle from "../css/page/addressPage.module.css";
 import { CiSearch } from "react-icons/ci";
 import { CiLocationArrow1 } from "react-icons/ci";
+import Modal from "../components/Modal";
 export default function AddressPage() {
   const [inputValue, setInputValue] = useState("");
   const [results, setResults] = useState<any[]>([]);
   const [errorMsg, setErrorMsg] = useState("");
+  const [showLocation, setShowLocation] = useState(false);
+  const [title, setTitle] = useState("");
+  const [text, setText] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleAddress = async () => {
     if (inputValue.trim() === "") {
@@ -51,7 +56,8 @@ export default function AddressPage() {
 
   return (
     <div className={addressStyle.pageContainer}>
-      <Header />
+      <Header showLocation={showLocation} setShowLocation={setShowLocation} />
+      {isOpen && <Modal title={title} text={text} setIsOpen={setIsOpen} />}
       <div className={addressStyle.content}>
         <div className={addressStyle.inputDiv}>
           <input
@@ -59,14 +65,17 @@ export default function AddressPage() {
             className={addressStyle.addressInput}
             placeholder="주소를 입력해주세요"
             onChange={(e) => setInputValue(e.target.value)}
+            onFocus={() => setShowLocation(true)}
           />
           {/* {errorMsg && (
             <span className={addressStyle.errorMsg}>{errorMsg}</span>
           )} */}
-          <div onClick={getLocation} className={addressStyle.locationDiv}>
-            <CiLocationArrow1 className={addressStyle.locationIcon} />
-            <span>내 위치</span>
-          </div>
+          {showLocation && (
+            <div onMouseDown={getLocation} className={addressStyle.locationDiv}>
+              <CiLocationArrow1 className={addressStyle.locationIcon} />
+              <span>내 위치</span>
+            </div>
+          )}
           <CiSearch
             className={addressStyle.searchIcon}
             onClick={handleAddress}
