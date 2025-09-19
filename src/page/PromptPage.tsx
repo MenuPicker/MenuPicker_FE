@@ -1,8 +1,13 @@
 import { useState } from "react";
 import Header from "../components/Header";
 import promptStyle from "../css/page/promptPage.module.css";
+import { useSearchParams } from "react-router-dom";
 
 export default function PromptPage() {
+  const [searchParams] = useSearchParams();
+  const category = searchParams.get("category");
+  const address = searchParams.get("address");
+
   const [textArea, setTextArea] = useState<string>("");
   const [isDisabled, setIsisabled] = useState<boolean>(true);
   const handleTextArea = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -10,6 +15,35 @@ export default function PromptPage() {
     setTextArea(value);
     setIsisabled(value === "");
   };
+  const getResult = async () => {
+    if (!address || !category || !textArea) return;
+
+    const prompt = `
+      위치는 ${address}이고, ${category}를 찾아줘.
+      내 요구사항은 다음과 같아: ${textArea}
+      이 요구사항에 맞게 ${category}를 추천해줘.
+      결과는 JSON으로 address에는 주소를 reason에는 선택한 이유를 담아서 반환해줘.
+      `;
+
+    try {
+      const response = await fetch("/api/gemini", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt }),
+      });
+
+      if (!response.ok) {
+        console.error("Gemini API 호출 실패:", response.statusText);
+        return;
+      }
+
+      const data = await response.json();
+      console.log("Gemini 결과:", data);
+    } catch (err) {
+      console.error("Fetch 실패:", err);
+    }
+  };
+
   return (
     <div className={promptStyle.pageContainer}>
       <Header />
@@ -29,7 +63,7 @@ export default function PromptPage() {
           onChange={(e) => handleTextArea(e)}
         />
         <div className={promptStyle.btnDiv}>
-          <button onClick={() => {}} disabled={isDisabled}>
+          <button onClick={getResult} disabled={isDisabled}>
             제출하기
           </button>
         </div>
