@@ -9,7 +9,7 @@
 .qrDiv {
   /* background-color: red; */
   border: 1px solid black;
-  height: 4vh;
+  height: 4dvh;
   position: fixed;
   top: 0;
   width: 600px;
@@ -20,12 +20,12 @@
   color: #606060ff;
   text-align: center;
   /* margin-top: 20px; */
-  height: 5vh;
-  margin-top: 4vh;
+  height: 5dvh;
+  margin-top: 4dvh;
   font-weight: bold;
 }
 .content {
-  height: 90vh;
+  height: 90dvh;
   padding: 0 20px;
   box-sizing: border-box;
 }
