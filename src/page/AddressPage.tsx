@@ -68,7 +68,17 @@ export default function AddressPage() {
   return (
     <div className={addressStyle.pageContainer}>
       {isOpen && <Modal title={title} text={text} setIsOpen={setIsOpen} />}
-      <header className={addressStyle.header}>
+      <header
+        className={`${addressStyle.header} ${
+          showLocation ? addressStyle.headerFocused : ""
+        }`}
+      >
+        {showLocation && (
+          <div onMouseDown={getLocation} className={addressStyle.locationDiv}>
+            <CiLocationArrow1 className={addressStyle.locationIcon} />
+            <span>내 위치</span>
+          </div>
+        )}
         <IoIosArrowBack
           className={addressStyle.backIcon}
           onClick={handleBackBtn}
@@ -88,12 +98,7 @@ export default function AddressPage() {
           {/* {errorMsg && (
             <span className={addressStyle.errorMsg}>{errorMsg}</span>
           )} */}
-          {showLocation && (
-            <div onMouseDown={getLocation} className={addressStyle.locationDiv}>
-              <CiLocationArrow1 className={addressStyle.locationIcon} />
-              <span>내 위치</span>
-            </div>
-          )}
+
           <CiSearch
             className={addressStyle.searchIcon}
             onClick={handleAddress}

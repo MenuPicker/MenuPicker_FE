@@ -6,7 +6,7 @@
   position: relative;
 }
 .content {
-  height: 90vh;
+  height: 93vh;
   padding: 0 20px;
   box-sizing: border-box;
 }
@@ -79,18 +79,28 @@
 }
 
 .locationDiv {
-  /* margin-top: 30px; */
+  box-sizing: border-box;
+  padding-left: 15px;
+  width: 100%;
+  height: 8vh;
   display: flex;
-  font-size: 16px;
-  justify-content: center;
+  /* justify-content: center; */
+  align-items: center;
   color: #ff6600;
   position: absolute;
-  bottom: -15px;
-  margin-left: 10px;
+  /* margin-left: 10px; */
+  border-bottom: 1px solid #cccccc;
+  bottom: 0;
+  transform: translateY(100%);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+.locationDiv > span {
+  font-size: 16px;
+  font-weight: 500;
 }
 .locationIcon {
-  height: 24px;
-  width: 24px;
+  height: 30px;
+  width: 30px;
 }
 
 .inputDivFocused > input {
@@ -103,14 +113,20 @@
 .header {
   color: #606060ff;
   /* margin-top: 20px; */
-  height: 10vh;
+  height: 7vh;
   font-weight: bold;
   display: flex;
   align-items: center;
+  position: relative;
+  margin-top: 15px;
 }
 .backIcon {
   height: 30px;
   width: 30px;
   /* margin-top: 15px; */
   margin-left: 10px;
+  /* margin-top: 30px; */
+}
+.headerFocused {
+  border-bottom: 1px solid #e0e0e0;
 }
