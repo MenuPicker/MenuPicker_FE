@@ -28,11 +28,11 @@ export default async function handler(req: any, res: any) {
               ],
             },
           ],
-          generationConfig: {
-            thinkingConfig: {
-              thinkingBudget: 10,
-            },
-          },
+          // generationConfig: {
+          //   thinkingConfig: {
+          //     thinkingBudget: 10,
+          //   },
+          // },
         }),
       }
     );
