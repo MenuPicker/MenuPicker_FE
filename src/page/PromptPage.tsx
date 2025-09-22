@@ -21,7 +21,7 @@ export default function PromptPage() {
     const target = category === "food" ? "밥집" : "술집";
     const prompt = `위치는 ${address}이고, ${target}를 찾아줘.
       내 요구사항은 다음과 같아: ${textArea}
-      이 요구사항에 맞게 ${category}를 추천해줘.
+      이 요구사항에 맞게 ${target}를 추천해줘.
       결과는 JSON으로 address에는 주소를 reason에는 선택한 이유를 담아서 반환해줘.`;
 
     try {
