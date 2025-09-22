@@ -10,6 +10,8 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
+    console.log("배포 서버에서 key 확인:", process.env.GEMINI_API_KEY);
+
     const response = await fetch(
       "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
       {
@@ -28,11 +30,11 @@ export default async function handler(req: any, res: any) {
               ],
             },
           ],
-          generationConfig: {
-            thinkingConfig: {
-              thinkingBudget: 10,
-            },
-          },
+          // generationConfig: {
+          //   thinkingConfig: {
+          //     thinkingBudget: 10,
+          //   },
+          // },
         }),
       }
     );
