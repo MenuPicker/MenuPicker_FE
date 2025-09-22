@@ -15,7 +15,7 @@ export default async function handler(req: any, res: any) {
       {
         method: "POST",
         headers: {
-          "x-goog-api-key": `${process.env.GEMINI_API_KEY}`,
+          "x-goog-api-key": `AIzaSyA3tvheTdofwlSMGAtsxYtsJoADJdm97l8`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
