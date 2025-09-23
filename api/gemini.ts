@@ -35,7 +35,7 @@ export default async function handler(req: any, res: any) {
           ],
           generationConfig: {
             thinkingConfig: {
-              thinkingBudget: 10,
+              thinkingBudget: 70,
             },
           },
         }),
