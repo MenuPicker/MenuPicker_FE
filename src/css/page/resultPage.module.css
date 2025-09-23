@@ -13,3 +13,94 @@
   justify-content: center;
   align-items: center; */
 }
+
+.resultDiv {
+  background-color: #fffdfa;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  max-width: 520px;
+  margin: 24px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.name {
+  font-size: 28px;
+  font-weight: 800;
+  color: #ff6600;
+  margin-bottom: 4px;
+}
+
+.address {
+  font-size: 16px;
+  color: #333333;
+}
+
+.phone {
+  font-size: 16px;
+  color: #666666;
+}
+
+.kakaoMapBtn {
+  display: inline-block;
+  background-color: #ffeb00;
+  color: #000000;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 12px 20px;
+  border-radius: 14px;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+  max-width: 100px;
+  margin-top: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.kakaoMapBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.reasonDiv {
+  background-color: #fff4f0;
+  padding: 16px;
+  border-radius: 14px;
+  margin-top: 16px;
+}
+
+.reasonDiv span:first-child {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #ff6600;
+}
+
+.reason {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #444444;
+}
+
+.btnDiv {
+  /* margin-top: 300px; */
+  /* display: flex;
+  justify-content: center; */
+  position: fixed;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.btnDiv > button {
+  border: none;
+  width: 300px;
+  background-color: #ff6600;
+  height: 50px;
+  color: white;
+  font-size: 20px;
+  border-radius: 10px;
+}
