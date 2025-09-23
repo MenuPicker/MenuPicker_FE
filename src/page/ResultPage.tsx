@@ -19,6 +19,7 @@ export default function ResultPage() {
   const address = searchParams.get("resultAddress");
   const reason = searchParams.get("resultReason");
   const [result, setResult] = useState<ResultPlace | null>(null);
+  const [naverQuery, setNaverQuery] = useState("");
 
   const fetchResultPlace = async () => {
     try {
@@ -36,6 +37,8 @@ export default function ResultPage() {
         return;
       }
       const data = await response.json();
+      const query = encodeURIComponent("대구 수성구 범어동 221-4");
+      const url = `https://map.naver.com/v5/search/${query}`;
 
       if (data.documents.length > 0) {
         const doc = data.documents[0];
@@ -47,6 +50,7 @@ export default function ResultPage() {
           x: doc.x,
           y: doc.y,
         };
+        setNaverQuery(data.documents[0].address_name);
         setResult(place);
       }
     } catch (error) {
@@ -72,15 +76,11 @@ export default function ResultPage() {
                 카카오맵에서 보기
               </a>
               {isMobile === true ? (
-                <a
-                  href={`nmap://place?lat=${result.y}&lng=${result.x}&name=${result.name}`}
-                >
+                <a href={`nmap://search?query=${naverQuery}`}>
                   네이버 지도에서 보기
                 </a>
               ) : (
-                <a
-                  href={`https://map.naver.com/v5/?c=${result.y},${result.x},15`}
-                >
+                <a href={`https://map.naver.com/v5/search/${naverQuery}`}>
                   네이버 지도에서 보기
                 </a>
               )}
