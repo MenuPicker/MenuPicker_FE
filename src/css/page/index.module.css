@@ -8,12 +8,36 @@
 }
 .qrDiv {
   /* background-color: red; */
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  background-color: #ffe6cc;
   height: 35px;
   position: fixed;
   top: 0;
   width: 600px;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.qrDiv button {
+  margin-right: 20px;
+  background-color: white; /* 앱 주 컬러 */
+  color: #ff6600;
+
+  font-size: 16px;
+
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+
+  transition: all 0.2s ease-in-out;
+}
+.qrDiv button:hover {
+  transform: scale(1.03);
+}
+
+.qrDiv button:active {
+  transform: scale(0.97);
 }
 .header {
   font-size: 13px;
