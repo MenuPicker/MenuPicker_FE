@@ -22,7 +22,7 @@ export default function PromptPage() {
     const prompt = `위치는 ${address}이고, ${target}를 찾아줘.
       내 요구사항은 다음과 같아: ${textArea}
       이 요구사항에 맞게 ${target}를 추천해줘.
-      결과는 JSON으로 address에는 주소를 reason에는 선택한 이유를 담아서 반환해줘.`;
+      결과는 첫째줄에 ${target}주소, 둘째줄에 선택한 이유 알려줘. 다른 부가적인 말 절대 추가하지 말고 딱 주소랑 이유만 적어.`;
 
     try {
       const response = await fetch("/api/gemini", {
