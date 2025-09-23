@@ -2,6 +2,7 @@ import { useSearchParams } from "react-router-dom";
 import Header from "../components/Header";
 import resultStyle from "../css/page/resultPage.module.css";
 import { useEffect, useState } from "react";
+import { isMobile } from "react-device-detect";
 
 interface ResultPlace {
   name: string;
@@ -70,11 +71,19 @@ export default function ResultPage() {
               <a href={result.kakaoURL} target="_blank" rel="noreferrer">
                 카카오맵에서 보기
               </a>
-              <a
-                href={`nmap://place?lat=${result.y}&lng=${result.x}&name=${result.name}`}
-              >
-                네이버 지도에서 보기
-              </a>
+              {isMobile === true ? (
+                <a
+                  href={`nmap://place?lat=${result.y}&lng=${result.x}&name=${result.name}`}
+                >
+                  네이버 지도에서 보기
+                </a>
+              ) : (
+                <a
+                  href={`https://map.naver.com/v5/?c=${result.x},${result.y},15`}
+                >
+                  네이버 지도에서 보기
+                </a>
+              )}
             </div>
           )}
         </div>
