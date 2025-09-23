@@ -56,7 +56,7 @@
   /* margin-top: 300px; */
   /* display: flex;
   justify-content: center; */
-  position: absolute;
+  position: fixed;
   bottom: 60px;
   left: 50%;
   transform: translateX(-50%);
