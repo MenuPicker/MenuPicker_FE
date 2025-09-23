@@ -1,4 +1,9 @@
 export default async function handler(req: any, res: any) {
+  console.log(
+    "Gemini Key:",
+    process.env.GEMINI_API_KEY ? "Loaded" : "Not found"
+  );
+
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Method not allowed" });
   }
