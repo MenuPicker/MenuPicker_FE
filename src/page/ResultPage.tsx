@@ -75,7 +75,7 @@ export default function ResultPage() {
               <a href={result.kakaoURL} target="_blank" rel="noreferrer">
                 카카오맵에서 보기
               </a>
-              {isMobile === true ? (
+              {/* {isMobile === true ? (
                 <a href={`nmap://search?query=${naverQuery}`}>
                   네이버 지도에서 보기
                 </a>
@@ -83,7 +83,7 @@ export default function ResultPage() {
                 <a href={`https://map.naver.com/v5/search/${naverQuery}`}>
                   네이버 지도에서 보기
                 </a>
-              )}
+              )} */}
             </div>
           )}
         </div>
