@@ -1,13 +1,13 @@
 import { useState } from "react";
 import Header from "../components/Header";
 import promptStyle from "../css/page/promptPage.module.css";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 export default function PromptPage() {
   const [searchParams] = useSearchParams();
   const category = searchParams.get("category");
   const address = searchParams.get("address");
-
+  const navigate = useNavigate();
   const [textArea, setTextArea] = useState<string>("");
   const [isDisabled, setIsisabled] = useState<boolean>(true);
   const handleTextArea = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -22,7 +22,8 @@ export default function PromptPage() {
     const prompt = `위치는 ${address}이고, ${target}를 찾아줘.
       내 요구사항은 다음과 같아: ${textArea}
       이 요구사항에 맞게 ${target}를 추천해줘.
-      결과는 첫째줄에 ${target}주소, 둘째줄에 선택한 이유 알려줘. 다른 부가적인 말 절대 추가하지 말고 딱 주소랑 이유만 적어.`;
+      결과는 첫째줄에 ${target}이름, 둘째줄에 ${target}주소, 셋째줄에 선택한 이유 알려줘. 다른 부가적인 말 절대 추가하지 말고 딱 이름, 주소, 이유만 적어. 
+      이름은 다른 지역에 같은 이름이 있을 수도 있으니까 그 부분 신경써서 결과하 하나만 나올 수 있도록 해줘. ${address}에서 가장 가까운 곳으로.`;
 
     try {
       const response = await fetch("/api/gemini", {
@@ -37,6 +38,17 @@ export default function PromptPage() {
       }
 
       const data = await response.json();
+
+      // 답변
+      const text = data.candidates[0].content.parts[0].text;
+
+      //파싱
+      const [resultName, resultAddress, resultReason] = text.split("\n");
+
+      navigate(
+        `/result?resultName=${resultName}&resultAddress=${resultAddress}&resultReason=${resultReason}`
+      );
+
       console.log("Gemini 결과:", data);
     } catch (err) {
       console.error("Fetch 실패:", err);
