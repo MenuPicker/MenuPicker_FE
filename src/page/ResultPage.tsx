@@ -79,7 +79,7 @@ export default function ResultPage() {
                 </a>
               ) : (
                 <a
-                  href={`https://map.naver.com/v5/?c=${result.x},${result.y},15`}
+                  href={`https://map.naver.com/v5/?c=${result.y},${result.x},15`}
                 >
                   네이버 지도에서 보기
                 </a>
