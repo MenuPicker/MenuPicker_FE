@@ -105,6 +105,18 @@ export default function ResultPage() {
             </div>
           </div>
         )}
+        {!result && (
+          <>
+            <div className={resultStyle.resultDiv}>
+              <span className={resultStyle.name}>{name}</span>
+              <span className={resultStyle.address}>주소: {address}</span>
+              <div className={resultStyle.reasonDiv}>
+                <span>AI 선택 이유</span>
+                <span className={resultStyle.reason}>{reason}</span>
+              </div>
+            </div>
+          </>
+        )}
         <div className={resultStyle.btnDiv}>
           <button
             onClick={() => {
