@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import addressStyle from "../css/page/addressPage.module.css";
 import { CiSearch } from "react-icons/ci";
@@ -6,6 +6,17 @@ import { CiLocationArrow1 } from "react-icons/ci";
 import Modal from "../components/Modal";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate, useSearchParams } from "react-router-dom";
+
+function useDebounce<T>(value: T, delay: number) {
+  const [debounced, setDebounced] = useState(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => setDebounced(value), delay);
+    return () => clearTimeout(handler);
+  }, [value, delay]);
+
+  return debounced;
+}
 
 export default function AddressPage() {
   const [searchParams] = useSearchParams();
@@ -19,6 +30,18 @@ export default function AddressPage() {
   const navigate = useNavigate();
   const [address, setAddress] = useState<string>("");
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
+  const debouncedValue = useDebounce(inputValue, 500);
+
+  useEffect(() => {
+    if (debouncedValue) {
+      handleAddress(debouncedValue);
+    } else {
+      setResults([]);
+    }
+  }, [debouncedValue]);
+
+
+
 
   const handleAddress = async (query: string) => {
     if (!query) return;
@@ -145,7 +168,7 @@ export default function AddressPage() {
             placeholder="주소 또는 장소를 입력해주세요"
             onChange={(e) => {
               setInputValue(e.target.value);
-              handleAddress(e.target.value);
+              // handleAddress(e.target.value);
             }}
             onFocus={() => setShowLocation(true)}
           />
